@@ -22,6 +22,20 @@ def login_standard_user(driver):
     login_button = driver.find_element_by_xpath(Login.login_button_loc)
     login_button.click()
 
+
+@when('I login with the user credentials "<username>" and "<Password>"')
+def login_standarduser(driver, username, Password):
+    driver.maximize_window()
+    # userName
+    user_name = driver.find_element_by_xpath(Login.user_name_loc)
+    user_name.send_keys(username, str)
+    # password
+    password = driver.find_element_by_xpath(Login.password_loc)
+    password.send_keys(Password, str)
+    # login
+    login_button = driver.find_element_by_xpath(Login.login_button_loc)
+    login_button.click()
+
 @then("I validate the home page")
 def validate_home_page(driver):
     "This method is used to validate the home page with the help of logo and URl verification"
